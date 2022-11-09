@@ -47,7 +47,7 @@
         "use_pretrained_resnet18": 0,
 
         "rough_mpp": 0.15,
-        "add_noise": "rnd",
+        "add_noise": "fixed",
         "add_noise_prob": 1,
         "obs_prob_weight": 1,
         "trans_prob_weight": 1,
@@ -63,9 +63,9 @@
         "device": "cuda:0",
         "episode_num": 30,
         "nav_episode_budget": 500,
-        "show_visualization": 0,
-        "enable_logging": 1,
-        "log_save_path": "logs/test",
+        "show_visualization": 1,
+        "enable_logging": 0,
+        "log_save_path": "logs/11-8/bl_obs=color_gt_map_seed=0",
         "visualization": "belief_update"
     }
 }
