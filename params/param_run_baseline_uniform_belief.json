@@ -1,0 +1,71 @@
+{
+    "scene_cfg": {
+        "scene": "",
+        "random_seed": 1234,
+        "allow_sliding": 1,
+        "max_episode_length": 500,
+        "goal_reach_eps": 0.4
+    },
+
+    "sensor_cfg": {
+        "use_sensors": ["color_sensor"],
+        "sensor_height": 0.25,
+        "obs_width": 80,
+        "obs_height": 80,
+        "enable_panorama": 1,
+        "clip_depth_max": 0.0
+    },
+
+    "map_cfg": {
+        "top_down_type": "boundary",
+        "meters_per_pixel": 0.01,
+        "local_map_size": 50,
+        "enable_local_map": 0,
+        "enable_ego_local_map":0,
+        "show_agent": 1,
+        "show_goal": 1,
+        "coarse_local_map_size": 3
+    },
+
+    "agent_cfg": {
+        "move_forward": 0.15,
+        "turn_left": 90,
+        "turn_right": 90
+    },
+
+    "cmn_cfg": {
+        "enable_random_policy": 0,
+        "enable_optimal_policy": 0,
+        "obs_name": "color",
+        "clip_depth": 0,
+        "forward_step_k": 2,
+        "use_pos_ori": 0,
+        "init_belief": "uniform",
+        "local_map_predictor_model": "results/",
+        "batch_size": 1,
+        "dropout": 0.5,
+        "use_pretrained_resnet18": 0,
+
+        "rough_mpp": 0.15,
+        "add_noise": "fixed",
+        "add_noise_prob": 1,
+        "obs_prob_weight": 1,
+        "trans_prob_weight": 1,
+        "local_map_type": "gt"
+    },
+
+    "run_cfg": {
+        "station_name": "desktop",
+        "dataset_name": "gibson",
+	    "mode": "tst",
+        "run_num": 0,
+        "random_seed": 0,
+        "device": "cuda:0",
+        "episode_num": 30,
+        "nav_episode_budget": 500,
+        "show_visualization": 1,
+        "enable_logging": 0,
+        "log_save_path": "logs/11-8/bl_obs=color_gt_map_seed=0",
+        "visualization": "belief_update"
+    }
+}
