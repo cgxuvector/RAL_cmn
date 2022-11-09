@@ -598,19 +598,12 @@ class CoarseMapNavigator(object):
 
         # strategies for agent at goal location on the rough map no matter correct or wrong
         if agent_map_idx == goal_map_idx:
+            # we will reset the belief to be the observation probability.
             self.agent_belief_map = self.observation_prob_map.copy()
-            return random.sample(["move_forward", "turn_left", "turn_right"], 1)[0]
-
-        # if fail to estimate the location, return a random action
-        if agent_map_idx is None:
             return random.sample(["move_forward", "turn_left", "turn_right"], 1)[0]
 
         # plan a path using Dijkstra's algorithm
         path = self.rough_map.dijkstra_path(agent_map_idx, goal_map_idx)
-
-        # if no path is found, return a random action
-        if len(path) == 0:
-            return random.sample(["move_forward", "turn_left", "turn_right"], 1)[0]
 
         # compute the heuristic vector
         loc_1 = agent_map_loc
@@ -879,7 +872,7 @@ if __name__ == "__main__":
             os.makedirs(general_params['run_cfg']['log_save_path'])
 
         # create the file name
-        log_file_name = f"{general_params['run_cfg']['log_save_path']}/run_seed=0.log"
+        log_file_name = f"{general_params['run_cfg']['log_save_path']}/run_seed={general_params['run_cfg']['run_num']}.log"
 
         # create the log to save data
         if os.path.exists(log_file_name):
@@ -889,7 +882,7 @@ if __name__ == "__main__":
 
     # run evaluation
     env_results = {}
-    for env_name in env_names:
+    for idx, env_name in enumerate(env_names):
         if general_params['run_cfg']['enable_logging']:
             logging.info(f"******* Evaluation run seed = {general_params['run_cfg']['random_seed']} starts  *******")
             logging.info(f"******* Env name = {env_name}  *******")
@@ -906,3 +899,5 @@ if __name__ == "__main__":
 
         # close the environment
         my_house.close()
+
+        break

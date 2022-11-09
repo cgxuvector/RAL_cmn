@@ -506,8 +506,8 @@ class House(object):
             self.start_loc, self.goal_loc, self.geo_dist = self.sample_start_goal_locations()
 
             # # todo: debug
-            # self.start_loc = np.array([-2.68,  0.15,  1.26])
-            # self.goal_loc = np.array([-1.05,  0.15, -2.04])
+            # self.start_loc = np.array([0.79, 0.17, 2.53])
+            # self.goal_loc = np.array([-3.25,  0.17, -0.91])
 
             # reset the top-down map
             self.top_down_map_traj = self.top_down_map.copy()
