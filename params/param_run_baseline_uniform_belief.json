@@ -55,17 +55,17 @@
     },
 
     "run_cfg": {
-        "station_name": "desktop",
+        "station_name": "obsidian",
         "dataset_name": "gibson",
 	    "mode": "tst",
-        "run_num": 0,
-        "random_seed": 0,
-        "device": "cuda:0",
+        "run_num": 2,
+        "random_seed": 20,
+        "device": "cuda:1",
         "episode_num": 30,
-        "nav_episode_budget": 500,
-        "show_visualization": 1,
-        "enable_logging": 0,
-        "log_save_path": "logs/11-8/bl_obs=color_gt_map_seed=0",
+        "nav_episode_budget": 1000,
+        "show_visualization": 0,
+        "enable_logging": 1,
+        "log_save_path": "logs/11-8/bl_obs=gt_map=gt_mpp=015_T=1k",
         "visualization": "belief_update"
     }
 }

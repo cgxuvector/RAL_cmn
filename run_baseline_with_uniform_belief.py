@@ -879,13 +879,12 @@ if __name__ == "__main__":
             os.makedirs(general_params['run_cfg']['log_save_path'])
 
         # create the file name
-        log_file_name = f"{general_params['run_cfg']['log_save_path']}/run_seed=0.log"
+        log_file_name = f"{general_params['run_cfg']['log_save_path']}/run_seed={general_params['run_cfg']['run_num']}.log"
 
         # create the log to save data
         if os.path.exists(log_file_name):
             os.remove(log_file_name)
-        logging.basicConfig(filename=log_file_name, level=logging.DEBUG)
-        logging.info(f"******* Evaluation run seed = {general_params['run_cfg']['random_seed']} starts  *******")
+        logging.basicConfig(filename=log_file_name, level=logging.DEBUG) 
 
     # run evaluation
     env_results = {}
