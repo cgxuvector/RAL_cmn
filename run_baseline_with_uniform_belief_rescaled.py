@@ -166,16 +166,20 @@ class CoarseMapNavigator(object):
         # save the environment boundary
         self.params['map_cfg']['env_boundary'] = self.env.simulator.pathfinder.get_bounds()
 
+        # load the 2-D gt map
+        gt_map = np.load(f"roughmaps/{self.params['run_cfg']['dataset_name']}/"
+                         f"{self.env_name}_map_binary_arr_mpp_015.npy")
+
         # load the 2-D coarse map
-        if self.params['cmn_cfg']['rough_mpp'] == 0.15:
-            coarse_map = np.load(f"roughmaps/{self.params['run_cfg']['dataset_name']}/"
-                                 f"{self.env_name}_map_binary_arr_mpp_015.npy")
-        else:
-            coarse_map = np.load(f"roughmaps/{self.params['run_cfg']['dataset_name']}/"
-                                 f"{self.env_name}_map_binary_arr_mpp_0{int(self.params['cmn_cfg']['rough_mpp'] * 10)}.npy")
+        coarse_map = np.load(f"roughmaps/{self.params['run_cfg']['dataset_name']}/"
+                             f"{self.env_name}_map_binary_arr_mpp_0{int(self.params['cmn_cfg']['rough_mpp'] * 10)}.npy")
+
+        # Resize the coarse map to the GT map size
+        coarse_map_resized = resize(coarse_map, gt_map.shape)
+        coarse_map_resized = np.where(coarse_map_resized >= 0.8, 1.0, 0.0)
 
         # create the graph-structured map
-        self.rough_map = TopoMap(coarse_map, self.params['map_cfg'])
+        self.rough_map = TopoMap(coarse_map_resized, self.params['map_cfg'])
 
     def init_belief(self):
         # init the belief: 1.0 for empty space and 0.0 for walls
@@ -840,7 +844,7 @@ class CoarseMapNavigator(object):
 
 if __name__ == "__main__":
     # load CMN parameters
-    general_params = ParamsLoader("params/param_run_baseline_uniform_belief.json").params_data
+    general_params = ParamsLoader("params/param_run_baseline_uniform_belief_rescaled.json").params_data
 
     # set the randomness for reproduction
     np.random.seed(general_params['run_cfg']['random_seed'])
@@ -877,7 +881,7 @@ if __name__ == "__main__":
         # create the log to save data
         if os.path.exists(log_file_name):
             os.remove(log_file_name)
-        logging.basicConfig(filename=log_file_name, level=logging.DEBUG) 
+        logging.basicConfig(filename=log_file_name, level=logging.DEBUG)
 
     # run evaluation
     env_results = {}
