@@ -63,9 +63,9 @@
         "device": "cuda:0",
         "episode_num": 30,
         "nav_episode_budget": 500,
-        "show_visualization": 1,
-        "enable_logging": 0,
-        "log_save_path": "logs/11-8/bl_obs=color_gt_map_seed=0",
+        "show_visualization": 0,
+        "enable_logging": 1,
+        "log_save_path": "logs/11-10/cmn_obs=pred_map=gt_T=500",
         "visualization": "belief_update"
     }
 }

@@ -605,7 +605,6 @@ class CoarseMapNavigator(object):
         # plan a path using Dijkstra's algorithm
         path = self.rough_map.dijkstra_path(agent_map_idx, goal_map_idx)
 
-
         if len(path) <= 1:
             return random.sample(["move_forward", "turn_left", "turn_right"], 1)[0]
 

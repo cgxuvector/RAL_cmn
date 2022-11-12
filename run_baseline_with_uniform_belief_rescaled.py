@@ -243,8 +243,11 @@ class CoarseMapNavigator(object):
             c = int((loc[0] - self.env.min_x) // self.env.meters_per_pixel)
             r = int((loc[2] - self.env.min_y) // self.env.meters_per_pixel)
         else:
-            c = int((loc[0] - self.env.min_x) // self.params['cmn_cfg']['rough_mpp']) + 1
-            r = int((loc[2] - self.env.min_y) // self.params['cmn_cfg']['rough_mpp']) + 1
+            # c = int((loc[0] - self.env.min_x) // self.params['cmn_cfg']['rough_mpp']) + 1
+            # r = int((loc[2] - self.env.min_y) // self.params['cmn_cfg']['rough_mpp']) + 1
+            # We rescale the map back to the ground truth size
+            c = int((loc[0] - self.env.min_x) // 0.15) + 1
+            r = int((loc[2] - self.env.min_y) // 0.15) + 1
 
         # increase the index by 1 because we add a boundary outside the original grid
         r += 1

@@ -34,7 +34,7 @@
     },
 
     "cmn_cfg": {
-        "enable_random_policy": 1,
+        "enable_random_policy": 0,
         "enable_optimal_policy": 0,
         "obs_name": "color",
         "clip_depth": 0,

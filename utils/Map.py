@@ -136,7 +136,7 @@ class TopoMap(object):
         # find the shortest path
         try:
             shortest_path = nx.dijkstra_path(self.global_map_graph, s_node, e_node)
-        except nx.NetworkXNoPath:
+        except (nx.NetworkXNoPath, nx.NetworkXError, nx.exception.NodeNotFound):
             shortest_path = []
 
         return shortest_path
