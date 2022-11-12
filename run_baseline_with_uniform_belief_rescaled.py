@@ -612,6 +612,9 @@ class CoarseMapNavigator(object):
         # plan a path using Dijkstra's algorithm
         path = self.rough_map.dijkstra_path(agent_map_idx, goal_map_idx)
 
+        if len(path) <= 1:
+            return random.sample(["move_forward", "turn_left", "turn_right"], 1)[0]
+
         # compute the heuristic vector
         loc_1 = agent_map_loc
         loc_2 = self.rough_map.sampled_locations[path[1]]
@@ -905,3 +908,5 @@ if __name__ == "__main__":
 
         # close the environment
         my_house.close()
+
+        break
