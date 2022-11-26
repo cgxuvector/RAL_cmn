@@ -58,13 +58,13 @@
         "station_name": "desktop",
         "dataset_name": "gibson",
 	    "mode": "tst",
-        "run_num": 3,
-        "random_seed": 30,
+        "run_num": 0,
+        "random_seed": 0,
         "device": "cuda:0",
         "episode_num": 30,
         "nav_episode_budget": 500,
-        "show_visualization": 0,
-        "enable_logging": 1,
+        "show_visualization": 1,
+        "enable_logging": 0,
         "log_save_path": "logs/11-26/bl_obs=pred_map=gt_T=500",
         "visualization": "belief_update"
     }

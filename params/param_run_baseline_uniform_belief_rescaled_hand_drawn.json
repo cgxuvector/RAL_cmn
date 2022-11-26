@@ -60,12 +60,12 @@
 	    "mode": "tst",
         "run_num": 0,
         "random_seed": 0,
-        "device": "cpu",
+        "device": "cuda:0",
         "episode_num": 30,
         "nav_episode_budget": 500,
-        "show_visualization": 1,
-        "enable_logging": 0,
-        "log_save_path": "logs/test",
+        "show_visualization": 0,
+        "enable_logging": 1,
+        "log_save_path": "logs/11-10/bl_obs=pred_map=rescaled_hand_drawn_T=500",
         "visualization": "belief_update"
     }
 }

@@ -931,5 +931,3 @@ if __name__ == "__main__":
 
         # close the environment
         my_house.close()
-
-        break
